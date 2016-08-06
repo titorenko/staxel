@@ -1,0 +1,87 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
+apply plugin: "eclipse"
+
+group = 'uk.elementarysoftware'
+version = '0.1.0-SNAPSHOT'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {	
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+if (hasProperty('ossrhUsername')) {
+	
+	signing {
+	    sign configurations.archives
+	}
+
+	uploadArchives {
+	  repositories {
+	    mavenDeployer {
+	      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+	      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+	        authentication(userName: ossrhUsername, password: ossrhPassword)
+	      }
+
+	      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+	        authentication(userName: ossrhUsername, password: ossrhPassword)
+	      }
+
+	      pom.project {
+	        name 'Staxel'
+	        packaging 'jar'
+	        description 'Staxel is a library for permissive XML parsing with StAX'
+	        url 'https://github.com/titorenko/staxel'
+
+	        scm {
+	          connection 'scm:git:git://github.com/titorenko/staxel.git'
+	          developerConnection 'scm:git:git@github.com:titorenko/staxel.git'
+	          url 'https://github.com/titorenko/staxel'
+	        }
+
+	        licenses {
+	          license {
+	            name 'Apache License 2.0'
+	            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+	          }
+	        }
+
+	        developers {
+	          developer {
+	            id 'elementarysoftware'
+	            name 'Elementary Software Ltd.'
+	            email 'elementarysoftware@gmail.com'
+	          }
+	        }
+	      }
+	    }
+	  }
+	}
+}

@@ -1,0 +1,40 @@
+<weatherdata>
+	<location>
+		<name>London</name>
+		<type />
+		<country>GB</country>
+		<timezone />
+		<location altitude="0" latitude="51.50853" longitude="-0.12574" geobase="geonames" geobaseid="0" />
+	</location>
+	<credit />
+	<meta>
+		<lastupdate />
+		<calctime>0.0506</calctime>
+		<nextupdate />
+	</meta>
+	<sun rise="2016-08-04T04:30:14" set="2016-08-04T19:41:42" />
+	<forecast>
+		<time from="2016-08-04T12:00:00" to="2016-08-04T15:00:00">
+			<symbol number="804" name="overcast clouds" var="04d" />
+			<precipitation />
+			<windDirection deg="258.502" code="WSW" name="West-southwest" />
+			<windSpeed mps="5.66" name="Moderate breeze" />
+			<temperature unit="celsius" value="21.68" min="19.71"
+				max="21.68" />
+			<pressure unit="hPa" value="1015.1" />
+			<humidity value="63" unit="%" />
+			<clouds value="overcast clouds" all="92" unit="%" />
+		</time>
+		<time from="2016-08-04T15:00:00" to="2016-08-04T18:00:00">
+			<symbol number="804" name="overcast clouds" var="04d" />
+			<precipitation />
+			<windDirection deg="270.502" code="W" name="West" />
+			<windSpeed mps="5.46" name="Moderate breeze" />
+			<temperature unit="celsius" value="20.67" min="19.19"
+				max="20.67" />
+			<pressure unit="hPa" value="1015.8" />
+			<humidity value="62" unit="%" />
+			<clouds value="overcast clouds" all="100" unit="%" />
+		</time>
+	</forecast>
+</weatherdata>
