@@ -98,7 +98,7 @@ private Location parseLocation(Cursor cur) {
   for (XMLElement e : cur) { //child cursor will iterate over <location> and all of it's child elements
       switch (e.getName()) {
       case "name":
-          loc.city = e.getText();//get inner text of current element from `XMLElement`
+          loc.city = e.getText();//get inner text of current element from XMLElement
           break;
       case "country":
           loc.country = e.getText();
@@ -113,7 +113,7 @@ private Forecast parseForecast(Cursor cur) {
     for (XMLElement e : cur) { //child cursor will iterate over <forecast> and all of it's child elements
         switch (e.getName()) {
         case "time":
-            f.from = LocalDateTime.parse(e.getAttribute("from")); //get attribute value from `XMLElement`
+            f.from = LocalDateTime.parse(e.getAttribute("from")); //get attribute value from XMLElement
             f.to = LocalDateTime.parse(e.getAttribute("to"));
             break;
         case "temperature":
